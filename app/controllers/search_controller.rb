@@ -1,8 +1,8 @@
 class SearchController < ApplicationController
   def index
-    response = Store.get_requested_stores(search_params[:search])
+    json_parsed_response = Store.get_requested_stores(search_params[:search])
 
-    json_parsed_response = JSON.parse(response.body, symbolize_names: true)
+    # json_parsed_response = JSON.parse(response.body, symbolize_names: true)
 
     @total = json_parsed_response[:total]
     @stores = json_parsed_response[:stores].map do |store_data|

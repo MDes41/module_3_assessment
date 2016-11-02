@@ -16,7 +16,8 @@ class Store
 
     response = conn.get do |req|                           # GET http://sushi.com/search?page=2&limit=100
     end
+    
+    json_parsed_response = JSON.parse(response.body, symbolize_names: true)
   end
 
-  # json_parsed_response = JSON.parse(response.body, symbolize_names: true)
 end
