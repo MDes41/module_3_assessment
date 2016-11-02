@@ -19,6 +19,13 @@
       <li>
         <a href="/orders">Orders</a>
       </li>
+      <li>
+        <%= form_for :search, url: '/search', method: 'get' do |f| %>
+        <%= f.label :search, 'Stores by Zip'%>
+        <%= f.text_field :search %>
+        <%= f.submit 'Search', method: 'get'%>
+        <% end %>
+      </li>
     </ul>
   </div>
 </nav>

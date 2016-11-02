@@ -4,9 +4,10 @@ RSpec.describe 'When I search by zip' do
   it 'returns 15 stores' do
     # As a user
     # When I visit "/"
-    visit items_path
+    visit '/'
     # And I fill in a search box with "80202" and click "search"
-    fill_in 'Search', with: "80202"
+    fill_in 'search[search]', with: "80202"
+    click_on 'Search'
     # Then my current path should be "/search" (ignoring params)
     expect(current_path).to eq('/search')
     # And I should see stores within 25 miles of 80202
