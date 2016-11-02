@@ -7,15 +7,14 @@ class BestBuyApiService
   end
 
   def self.get_requested_stores(zip)
-    store_data = new(zip).store_data_req
-    parsed(store_data)
+    new(zip).parsed
   end
 
-  def parsed(data)
-    JSON.parse(data.body, symbolize_names: true)
+  def parsed
+    JSON.parse(conn.body, symbolize_names: true)
   end
 
-  def store_data_req
+  def conn
     @faraday.get do |req|
       req.params[:format] = 'json'
       req.params[:show] = 'longName,distance,city,phone,storeType'
