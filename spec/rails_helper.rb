@@ -6,6 +6,9 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 require 'spec_helper'
 require 'rspec/rails'
 require 'support/factory_girl'
+require 'capybara/rails'
+require 'capybara/rspec'
+include Capybara::DSL
 # Add additional requires below this line. Rails is not loaded until this point!
 VCR.configure do |config|
   config.allow_http_connections_when_no_cassette = true
