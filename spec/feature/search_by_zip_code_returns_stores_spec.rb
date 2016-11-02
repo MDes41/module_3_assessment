@@ -18,8 +18,9 @@ RSpec.describe 'When I search by zip' do
 
     # And I should see the long name, city, distance, phone number and store type for each of the 15 results
     expect(page).to have_content('Name:')
+    expect(page).to have_content('City:')
     expect(page).to have_content('Distance:')
     expect(page).to have_content('Phone Number:')
-    expect(page).to have_content('Store type:')
+    expect(page).to have_content('Store Type:')
   end
 end

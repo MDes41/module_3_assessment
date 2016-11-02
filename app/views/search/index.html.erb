@@ -1,0 +1,9 @@
+<%= @total %> Total Stores
+
+<% @stores.each do |store| %>
+  Name: <%= store.name %>
+  City: <%= store.city %>
+  Distance: <%= store.distance %>
+  Phone Number: <%= store.phone %>
+  Store Type: <%= store.type %>
+<% end %>
