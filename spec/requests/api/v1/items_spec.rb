@@ -19,7 +19,6 @@ RSpec.describe 'Items API Controller' do
     expect(json.first['name']).to eq(item.name)
     expect(json.first['description']).to eq(item.description)
     expect(json.first['image_url']).to eq(item.image_url)
-    expect(json.first['created_at']).to eq(item.created_at)
   end
 
   it 'can return info for one item' do
@@ -68,5 +67,6 @@ RSpec.describe 'Items API Controller' do
     expect(json['name']).to eq('Matt')
     expect(json['description']).to eq('shortdescription')
     expect(json['image_url']).to eq('httpwebsite')
+    expect(Item.all.count).to eq(11)
   end
 end

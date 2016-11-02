@@ -1,22 +1,26 @@
 class BestBuyApiService
 
   def initialize(zip)
-    @faraday = Faraday.new(:url => "https://api.bestbuy.com/v1/stores(area(#{zip},25))?format=json&show=longName,distance,city,phone,storeType&pageSize=15&apiKey=#{ENV['BEST_BUY_KEY']}") do |faraday|
+    @faraday = Faraday.new(:url => "https://api.bestbuy.com/v1/stores(area(#{zip},25))") do |faraday|
       faraday.adapter  Faraday.default_adapter  # make requests with Net::HTTP
     end
   end
 
   def self.get_requested_stores(zip)
-    new(zip).parsed
+    store_data = new(zip).store_data_req
+    parsed(store_data)
   end
 
-  def parsed
-    JSON.parse(conn.body, symbolize_names: true)
+  def parsed(data)
+    JSON.parse(data.body, symbolize_names: true)
   end
 
-  def conn
+  def store_data_req
     @faraday.get do |req|
-      #going to refactor and pull params out of initialize 
+      req.params[:format] = 'json'
+      req.params[:show] = 'longName,distance,city,phone,storeType'
+      req.params[:pageSize] = '15'
+      req.params[:apiKey] = ENV['BEST_BUY_KEY']
     end
   end
 end
