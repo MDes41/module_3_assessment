@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :item do
-    name "John"
-    description  "This is a test description"
-    image_url "http:faker"
+    name Faker::Name.name
+    description  Faker::Lorem.paragraph
+    image_url Faker::Avatar.image
   end
 end

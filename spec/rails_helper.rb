@@ -12,7 +12,7 @@ include Capybara::DSL
 # Add additional requires below this line. Rails is not loaded until this point!
 VCR.configure do |config|
   config.allow_http_connections_when_no_cassette = true
-  config.cassette_library_dir = "fixtures/vcr_cassettes"
+  config.cassette_library_dir = "spec/fixtures/vcr_cassettes"
   config.hook_into :webmock # or :fakeweb
 end
 # Requires supporting ruby files with custom matchers and macros, etc, in

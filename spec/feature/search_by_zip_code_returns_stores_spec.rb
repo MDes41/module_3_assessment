@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'When I search by zip' do
   it 'returns 15 stores' do
+    VCR.use_cassette("search") do
     # As a user
     # When I visit "/"
     visit '/'
@@ -27,5 +28,6 @@ RSpec.describe 'When I search by zip' do
     expect(page).to have_content('303-270-9189')
     expect(page).to have_content('Store Type:')
     expect(page).to have_content('Mobile')
+  end
   end
 end
