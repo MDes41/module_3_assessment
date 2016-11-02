@@ -9,15 +9,7 @@ class Store
   end
 
   def self.get_requested_data(zip)
-    conn = Faraday.new(:url => "https://api.bestbuy.com/v1/stores(area(#{zip},25))?format=json&show=longName,distance,city,phone,storeType&pageSize=15&apiKey=#{ENV['BEST_BUY_KEY']}") do |faraday|
-      faraday.request  :url_encoded             # form-encode POST params
-      faraday.adapter  Faraday.default_adapter  # make requests with Net::HTTP
-    end
-
-    response = conn.get do |req|                           # GET http://sushi.com/search?page=2&limit=100
-    end
-
-    JSON.parse(response.body, symbolize_names: true)
+    BestBuyApiService.get_requested_stores(zip)
   end
 
   def self.get_requested_stores(zip)
